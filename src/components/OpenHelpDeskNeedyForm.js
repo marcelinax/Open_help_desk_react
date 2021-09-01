@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { createNewProblem } from '../state/problemsSlice';
+import { useHistory } from 'react-router-dom';
 
-const OpenHelDeskNeedyForm = () => {
+const OpenHelpDeskNeedyForm = () => {
 		const [nickname, setNickname] = useState('');
 		const [avatarUrl, setAvatarUrl] = useState('');
 		const [checkIfFirstPageFormIsCompleted, setCheckIfFirstPageFormIsCompleted] = useState(false);
@@ -9,6 +12,8 @@ const OpenHelDeskNeedyForm = () => {
 		const [problemTag, setProblemTag] = useState('');
 		const [problemTags, setProblemTags] = useState([]);
 		const [problemDescription, setProblemDescription] = useState('');
+		const history = useHistory();
+		const dispatch = useDispatch();
 
 		const handleNicknameInput = (e) => {
 			setNickname(e.target.value);
@@ -43,8 +48,38 @@ const OpenHelDeskNeedyForm = () => {
 
 		};
 
+		const addNewProblem = () => {
+			if (!problemDescription) {
+				alert('Enter a problem description!');
+				return;
+			}
+			if (!problemTitle) {
+				alert('Enter a problem title!');
+				return;
+			}
+			if (!problemCategory) {
+				alert('Enter a problem category!');
+				return;
+			}
+			const problem = {
+				nickname,
+				avatarUrl,
+				problemTags,
+				problemTitle,
+				problemCategory,
+				problemDescription
+			};
+
+			dispatch(createNewProblem(problem));
+			history.push('/');
+
+		};
+
 		return !checkIfFirstPageFormIsCompleted ? (
 			<div className={'open-help-desk-needy-form'}>
+				<i className="bx bxs-left-arrow-alt go-back" onClick={() => {
+					history.push('/');
+				}}/>
 				<div className={'open-help-desk-needy-form-box'}>
 					<div className={'open-help-desk-needy-form-box-left'}>
 						<div className={`open-help-desk-needy-form-box-left-btn ${!checkIfFirstPageFormIsCompleted ? 'open-help-desk-needy-form-box-left-btn--active' : ''}`}>
@@ -76,6 +111,7 @@ const OpenHelDeskNeedyForm = () => {
 
 		) : (
 			<div className={'open-help-desk-needy-form'}>
+
 				<div className={'open-help-desk-needy-form-box'}>
 					<div className={'open-help-desk-needy-form-box-left'}>
 
@@ -118,7 +154,7 @@ const OpenHelDeskNeedyForm = () => {
 								</div>
 							</div>
 						</div>
-						<button>Finish</button>
+						<button onClick={addNewProblem}>Finish</button>
 					< /div>
 				</div>
 			</div>
@@ -126,4 +162,4 @@ const OpenHelDeskNeedyForm = () => {
 	}
 ;
 
-export default OpenHelDeskNeedyForm;
+export default OpenHelpDeskNeedyForm;

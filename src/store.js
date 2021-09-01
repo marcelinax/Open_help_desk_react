@@ -1,5 +1,8 @@
-import { configureStore } from '@reduxjs/toolkit'
+import { configureStore } from '@reduxjs/toolkit';
+import problemsSlice from './state/problemsSlice';
 
 export default configureStore({
-	reducer: {},
-})
+	reducer: {
+		problems: problemsSlice
+	},
+});

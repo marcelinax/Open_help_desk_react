@@ -1,10 +1,10 @@
 import React from 'react';
-import OpenHelDeskNeedyForm from './OpenHelpDeskNeedyForm';
+import OpenHelpDeskNeedyForm from './OpenHelpDeskNeedyForm';
 
 const OpenHelpDeskNeedy = () => {
 	return (
 		<div>
-			<OpenHelDeskNeedyForm/>
+			<OpenHelpDeskNeedyForm/>
 		</div>
 	);
 };
