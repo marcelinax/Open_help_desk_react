@@ -1,0 +1,47 @@
+@import '~boxicons';
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+}
+
+.open-help-desk-homepage {
+  display: flex;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+
+  &-buttons {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+    button {
+      outline: none;
+      box-shadow: 0 0 15px rgba(#000, 0.2);
+      padding: 20px 30px;
+      border: none;
+      background-color: #353269;
+      color: #69669D;
+      align-items: center;
+      justify-content: center;
+      display: flex;
+      cursor: pointer;
+      font-size: 1.2rem;
+      transition: .5s all;
+
+      &:hover {
+        transform: scale(0.9);
+      }
+
+      &:last-of-type {
+        border: 1px solid #353269;
+        background-color: white;
+        margin-left: 2rem;
+        color: #353269;
+      }
+    }
+  }
+}
