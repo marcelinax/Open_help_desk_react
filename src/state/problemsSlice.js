@@ -16,14 +16,14 @@ export const problemsSlice = createSlice({
 	},
 	reducers: {
 		createNewProblem: (state, action) => {
-			const { nickname, avatarUrl, problemTitle, problemCategory, problemTags, problemDescription } = action.payload;
+			const { nickname, avatarUrl, problemTitle, problemCategory, problemTags, problemDescriptions } = action.payload;
 			const newProblem = {
 				nickname,
 				avatarUrl,
 				problemTags,
 				problemTitle,
 				problemCategory,
-				problemDescription,
+				problemDescriptions,
 				id: uuidv4(),
 				isSolved: false
 			};
@@ -31,9 +31,15 @@ export const problemsSlice = createSlice({
 			state.problems = [...state.problems, newProblem];
 			saveProblemInLocalStorage(state.problems);
 		},
+		addNewProblemDescription: (state, action) => {
+			const { id } = action.payload.problem;
+			const { problemDescription } = action.payload;
+			const problem = state.problems.filter(problem => problem.id = id)[0];
+			problem.problemDescriptions = [...problem.problemDescriptions, { type: 'problem', message: problemDescription }];
+			saveProblemInLocalStorage(state.problems);
+		}
 	}
-
 });
 
-export const { createNewProblem } = problemsSlice.actions;
+export const { createNewProblem, addNewProblemDescription } = problemsSlice.actions;
 export default problemsSlice.reducer;
