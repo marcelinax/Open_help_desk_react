@@ -268,6 +268,12 @@
     align-items: center;
     z-index: 2;
 
+    select {
+      border: none;
+      outline: none;
+      color: #807F85;
+      font-weight: 600;
+    }
 
     button {
       display: flex;
@@ -307,7 +313,6 @@
     background-color: #F4F4F6;
     padding: 2rem 3rem;
     display: flex;
-    //height: calc(100vh - 4rem);
 
 
     &-list {
@@ -417,14 +422,13 @@
         }
 
         .problem-category-box {
-          width: -moz-fit-content;
-
+          width: fit-content;
           background-color: #69669D;
           padding: 6px;
           border-radius: 4px;
           justify-content: center;
           align-items: center;
-
+          display: flex;
 
           .problem-category {
             font-size: 12px;
@@ -587,6 +591,7 @@
 
           p {
             color: #949390;
+            font-size: 13px;
           }
         }
 
