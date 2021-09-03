@@ -19,8 +19,9 @@ const OpenHelpDeskHelperProblemsListItem = ({ problemTitle, problemCategory, pro
 	};
 
 	return (
-		<div className={selectedId === id ? 'open-help-desk-helper-problems-list-item--active' : 'open-help-desk-helper-problems-list-item'}
-				 onClick={() => selectProblem(id)}>
+		<div
+			className={selectedId === id ? 'open-help-desk-helper-problems-list-item--active' : 'open-help-desk-helper-problems-list-item'}
+			onClick={() => selectProblem(id)}>
 			<div className={'open-help-desk-helper-problems-list-item-needy-person-box'}>
 				<div className={'avatar'} style={{ backgroundImage: `url(${avatarUrl})` }}/>
 				<p className={'nickname'}>{nickname}</p>

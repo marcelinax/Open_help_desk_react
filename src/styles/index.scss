@@ -282,7 +282,7 @@
       background-color: #F4F4F6;
 
       border: 1px solid #E2E5EE;
-      padding: 5px;
+      padding: 8px;
       color: #8C8D9F;
       transition: .5s all;
       cursor: pointer;
@@ -357,6 +357,7 @@
         margin-bottom: 1rem;
         transition: .5s all;
         cursor: pointer;
+
 
         &--active {
           transform: scale(1.03);
@@ -439,6 +440,15 @@
           }
         }
 
+        i {
+          cursor: pointer;
+          color: #D1D1D3;
+
+          &:hover {
+            color: #353269;
+          }
+        }
+
 
       }
     }
@@ -502,12 +512,16 @@
           align-items: center;
           justify-content: center;
           background-color: #F4F4F6;
-
           border: 1px solid #E2E5EE;
-          padding: 5px;
+          padding: 8px;
           color: #8C8D9F;
           transition: .5s all;
           cursor: pointer;
+          margin-right: .5rem;
+
+          &:last-of-type {
+            margin-right: 0;
+          }
 
           i {
             margin: auto;

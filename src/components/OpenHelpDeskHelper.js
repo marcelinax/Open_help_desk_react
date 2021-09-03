@@ -21,7 +21,7 @@ const OpenHelpDeskHelper = () => {
 		dispatch(setSelectedProblemFilter({ problemFilter }));
 	};
 
-	
+
 	useEffect(() => {
 		getProblemFilter();
 	}, [problemFilter]);
