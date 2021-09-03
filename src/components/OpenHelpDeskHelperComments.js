@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import OpenHelpDeskHelperCommentsListItem from './OpenHelpDeskHelperCommentsListItem';
 import { setSelectedProblemId } from '../state/selectedProblemSlice';
-import { addSolutionToProblemDescription } from '../state/problemsSlice';
+import { addSolutionToProblemDescription, toggleIsSolved } from '../state/problemsSlice';
 
 const OpenHelpDeskHelperComments = () => {
 		const problems = useSelector(state => state.problems.problems);
@@ -18,8 +18,12 @@ const OpenHelpDeskHelperComments = () => {
 			}
 		};
 
-		const sendSolution = () => {
+		const archiveProblem = () => {
+			dispatch(toggleIsSolved({ problem: selectedProblem }));
 
+		};
+
+		const sendSolution = () => {
 			dispatch(addSolutionToProblemDescription({ problem: selectedProblem, solution }));
 		};
 
@@ -52,7 +56,7 @@ const OpenHelpDeskHelperComments = () => {
 						</div>
 					</div>
 					<div className={'open-help-desk-helper-comments-top-needy-buttons-box'}>
-						<button><i className="bx bx-archive-in"></i></button>
+						<button onClick={archiveProblem}>  {selectedProblem.isSolved ? <i className="bx bx-archive-out"></i> : <i className="bx bx-archive-in"></i>}</button>
 						<button onClick={() => {
 							dispatch(setSelectedProblemId({ problemId: '' }));
 

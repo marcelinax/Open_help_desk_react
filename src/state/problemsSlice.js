@@ -46,10 +46,16 @@ export const problemsSlice = createSlice({
 			problem.problemDescriptions = [...problem.problemDescriptions, { type: 'solution', message: solution }];
 			saveProblemInLocalStorage(state.problems);
 			loadProblemFromLocalStorage();
+		},
+		toggleIsSolved: (state, action) => {
+			const { id } = action.payload.problem;
+			const problem = state.problems.filter(problem => problem.id === id)[0];
+			problem.isSolved = !problem.isSolved;
+			saveProblemInLocalStorage(state.problems);
 		}
 
 	}
 });
 
-export const { createNewProblem, addNewProblemDescription, addSolutionToProblemDescription } = problemsSlice.actions;
+export const { createNewProblem, addNewProblemDescription, addSolutionToProblemDescription, toggleIsSolved } = problemsSlice.actions;
 export default problemsSlice.reducer;

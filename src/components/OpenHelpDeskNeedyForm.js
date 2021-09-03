@@ -86,8 +86,10 @@ const OpenHelpDeskNeedyForm = () => {
 				.filter(problem => problem.avatarUrl === avatarUrl)
 				.filter(problem => problem.problemTitle === problemTitle)
 				.filter(problem => problem.problemCategory === problemCategory);
-			if (a.length > 0) dispatch(addNewProblemDescription({ problem: a[0], problemDescription }));
-			else addNewProblem();
+			if (a.length > 0) {
+				dispatch(addNewProblemDescription({ problem: a[0], problemDescription }));
+				history.push('/');
+			} else addNewProblem();
 		};
 
 

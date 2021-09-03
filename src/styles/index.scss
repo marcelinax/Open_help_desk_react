@@ -313,7 +313,32 @@
     &-list {
       display: flex;
       flex-direction: column;
-      width: 100%;
+      width: calc(100% - 4rem);
+      overflow-y: auto;
+      padding: 0 2rem;
+
+
+      &::-webkit-scrollbar {
+        width: 7px;
+
+
+      }
+
+      &::-webkit-scrollbar-track {
+        background: #8C8D9C;
+        border-radius: 20px;
+
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background: #8C8D9C;
+        border-radius: 20px;
+
+      }
+
+      &::-webkit-scrollbar-thumb:hover {
+        background: #8C8D9C;
+      }
 
       &-item, &-item--active {
         box-shadow: 0 0 15px rgba(#000, .2);

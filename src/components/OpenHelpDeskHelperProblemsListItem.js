@@ -1,14 +1,21 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setSelectedProblemId } from '../state/selectedProblemSlice';
+import { toggleIsSolved } from '../state/problemsSlice';
 
 const OpenHelpDeskHelperProblemsListItem = ({ problemTitle, problemCategory, problemTags, nickname, avatarUrl, id }) => {
 	const dispatch = useDispatch();
 	const selectedId = useSelector(state => state.selectedProblemId.selectedProblemId);
-
+	const problems = useSelector(state => state.problems.problems);
+	const selectedProblem = problems.filter(problem => problem.id === id)[0];
 	const selectProblem = (problemId) => {
 		dispatch(setSelectedProblemId({ problemId }));
-		
+
+	};
+
+
+	const toggleArchivizeProblem = () => {
+		dispatch(toggleIsSolved({ problem: selectedProblem }));
 	};
 
 	return (
@@ -26,7 +33,9 @@ const OpenHelpDeskHelperProblemsListItem = ({ problemTitle, problemCategory, pro
 			<div className={'problem-category-box'}>
 				<p className={'problem-category'}>{problemCategory}</p>
 			</div>
-			<i className="bx bx-dots-vertical-rounded"></i>
+			{selectedProblem.isSolved ? <i className="bx bx-archive-out" onClick={toggleArchivizeProblem}/> :
+				<i className="bx bx-archive-in" onClick={toggleArchivizeProblem}/>}
+
 		</div>
 	);
 };
