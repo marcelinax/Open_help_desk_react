@@ -8,6 +8,7 @@ const OpenHelpDeskHelperProblemsListItem = ({ problemTitle, problemCategory, pro
 
 	const selectProblem = (problemId) => {
 		dispatch(setSelectedProblemId({ problemId }));
+		
 	};
 
 	return (

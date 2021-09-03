@@ -261,11 +261,13 @@
   &-top {
     width: calc(100% - 5rem);
     background-color: white;
-    box-shadow: 0 0 15px rgba(#000, .5);
+    box-shadow: 0 0 15px rgba(#000, .2);
     padding: 1rem 2rem 1rem 3rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    z-index: 2;
+
 
     button {
       display: flex;
@@ -296,7 +298,8 @@
 
   &-main {
     display: flex;
-    height: 100vh;
+    height: calc(100vh - 3.6rem);
+
   }
 
   &-problems {
@@ -498,10 +501,45 @@
       width: calc(100% - 4rem);
       height: calc(100% - 2rem);
       padding: 1rem 2rem;
+      overflow: auto;
+
+      &::-webkit-scrollbar {
+        width: 10px;
+      }
+
+      &::-webkit-scrollbar-track {
+        background: #C5C9D2;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background: #9698A5;
+        border-radius: 20px;
+      }
+
+      &::-webkit-scrollbar-thumb:hover {
+        background: #b296be;
+      }
 
       .open-help-desk-helper-comments-list-item {
         display: flex;
         width: 100%;
+        margin-bottom: 1rem;
+
+        &-right {
+          justify-content: flex-end;
+
+          .open-help-desk-helper-comments-list-item-comment {
+            background-color: #5D5CFA !important;
+
+            p {
+              color: white !important;
+            }
+          }
+
+          .open-help-desk-helper-comments-list-item-person {
+            display: none;
+          }
+        }
 
         &-person {
           display: flex;
@@ -527,14 +565,7 @@
           }
         }
 
-        &-right {
-          justify-content: flex-end;
-          background-color: #5D5CFA;
 
-          .open-help-desk-helper-comments-list-item-person {
-            display: none;
-          }
-        }
       }
     }
 

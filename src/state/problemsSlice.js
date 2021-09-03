@@ -34,12 +34,22 @@ export const problemsSlice = createSlice({
 		addNewProblemDescription: (state, action) => {
 			const { id } = action.payload.problem;
 			const { problemDescription } = action.payload;
-			const problem = state.problems.filter(problem => problem.id = id)[0];
+			const problem = state.problems.filter(problem => problem.id === id)[0];
 			problem.problemDescriptions = [...problem.problemDescriptions, { type: 'problem', message: problemDescription }];
 			saveProblemInLocalStorage(state.problems);
+		},
+		addSolutionToProblemDescription: (state, action) => {
+			const { id } = action.payload.problem;
+			const { solution } = action.payload;
+
+			const problem = state.problems.filter(problem => problem.id === id)[0];
+			problem.problemDescriptions = [...problem.problemDescriptions, { type: 'solution', message: solution }];
+			saveProblemInLocalStorage(state.problems);
+			loadProblemFromLocalStorage();
 		}
+
 	}
 });
 
-export const { createNewProblem, addNewProblemDescription } = problemsSlice.actions;
+export const { createNewProblem, addNewProblemDescription, addSolutionToProblemDescription } = problemsSlice.actions;
 export default problemsSlice.reducer;

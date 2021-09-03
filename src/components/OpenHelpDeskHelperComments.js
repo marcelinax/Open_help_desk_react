@@ -2,23 +2,35 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import OpenHelpDeskHelperCommentsListItem from './OpenHelpDeskHelperCommentsListItem';
 import { setSelectedProblemId } from '../state/selectedProblemSlice';
+import { addSolutionToProblemDescription } from '../state/problemsSlice';
 
 const OpenHelpDeskHelperComments = () => {
 		const problems = useSelector(state => state.problems.problems);
 		const selectedProblemId = useSelector(state => state.selectedProblemId.selectedProblemId);
 		const [selectedProblem, setSelectedProblem] = useState({});
 		const dispatch = useDispatch();
+		const [solution, setSolution] = useState('');
 
 		const getSelectedProblem = () => {
 			if (selectedProblemId !== '') {
-				setSelectedProblem(problems.filter(problem => problem.id === selectedProblemId)[0]);
+				const newSelectedProblems = problems.filter(problem => problem.id === selectedProblemId);
+				setSelectedProblem(newSelectedProblems[0]);
 			}
+		};
+
+		const sendSolution = () => {
+
+			dispatch(addSolutionToProblemDescription({ problem: selectedProblem, solution }));
+		};
+
+		const handleSolutionInput = (e) => {
+			setSolution(e.target.value);
 		};
 
 		const renderMessages = () => {
 
-			return Object.keys(selectedProblem).length > 0 ? selectedProblem.problemDescriptions.map(problemDescription => (
-				<OpenHelpDeskHelperCommentsListItem avatarUrl={selectedProblem.avatarUrl} isProblem={problemDescription.type === 'problem'}
+			return Object.keys(selectedProblem).length > 0 ? selectedProblem.problemDescriptions.map((problemDescription, index) => (
+				<OpenHelpDeskHelperCommentsListItem key={index} avatarUrl={selectedProblem.avatarUrl} isProblem={problemDescription.type === 'problem'}
 																						comment={problemDescription.message}/>
 			)) : null
 				;
@@ -26,7 +38,8 @@ const OpenHelpDeskHelperComments = () => {
 
 		useEffect(() => {
 			getSelectedProblem();
-		}, [selectedProblemId]);
+		}, [selectedProblemId, problems]);
+
 
 		return (
 			<div className={'open-help-desk-helper-comments'}>
@@ -50,8 +63,9 @@ const OpenHelpDeskHelperComments = () => {
 					{renderMessages()}
 				</div>
 				<div className={'open-help-desk-helper-comments-write-comment'}>
-					<textarea placeholder={'Comment'}></textarea>
-					<button>Send</button>
+					<textarea placeholder={'Comment'} onChange={handleSolutionInput} value={solution}/>
+					<button onClick={sendSolution}>Send</button>
+
 				</div>
 			</div>
 		);
