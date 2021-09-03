@@ -151,7 +151,7 @@ const OpenHelpDeskNeedyForm = () => {
 
 		const renderSecondPageForm = () => {
 			return (
-				<div className={'open-help-desk-needy-form'}>
+				<div className={'open-help-desk-needy-form open-help-desk-needy-form-second-page'}>
 
 					<div className={'open-help-desk-needy-form-box'}>
 						<div className={'open-help-desk-needy-form-box-left'}>
