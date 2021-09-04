@@ -481,6 +481,10 @@
     padding: 2rem 3rem;
     display: flex;
 
+    @media(max-width: 1600px) {
+      padding: 2rem 0;
+    }
+
 
     &-list {
       display: flex;
@@ -488,7 +492,10 @@
       width: calc(100% - 4rem);
       overflow-y: auto;
       padding: 0 2rem;
-
+      @media(max-width: 768px) {
+        padding: 0 1rem;
+        width: calc(100% - 2rem);
+      }
 
       &::-webkit-scrollbar {
         width: 7px;
@@ -515,7 +522,6 @@
       &-item, &-item--active {
         box-shadow: 0 0 15px rgba(#000, .2);
         display: flex;
-        justify-content: space-between;
         background-color: white;
         padding: 1rem;
         max-width: calc(100% - 2rem);
@@ -524,6 +530,16 @@
         margin-bottom: 1rem;
         transition: .5s all;
         cursor: pointer;
+        position: relative;
+        @media(max-width: 1335px) {
+          flex-direction: column;
+          align-items: start;
+        }
+        @media (max-width: 375px) {
+          padding: 0.5rem;
+          max-width: calc(100% - 1rem);
+          min-width: calc(100% - 1rem);
+        }
 
 
         &--active {
@@ -549,7 +565,6 @@
             background-repeat: no-repeat;
             background-size: contain;
             box-shadow: 0 0 15px rgba(#000, 0.2);
-
           }
 
           .nickname {
@@ -557,25 +572,52 @@
             font-weight: 500;
             font-size: 14px;
             margin-left: 1rem;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            max-width: 10rem;
+
+            @media (max-width: 425px) {
+              display: none;
+            }
           }
         }
 
 
         &-problem-info {
           display: flex;
-          min-width: 70%;
-          max-width: 70%;
           flex-direction: column;
-
           justify-content: flex-start !important;
           align-items: flex-start !important;
-
           margin-right: 1rem;
+          margin-left: 1rem;
+
+          @media(max-width: 1335px) {
+            margin-left: 0;
+            margin-top: 1rem;
+          }
+          @media(max-width: 768px) {
+            display: none;
+          }
 
           .problem-title {
             color: #353269;
             font-weight: 500;
             font-size: 14px;
+            max-width: 300px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+
+            @media(max-width: 1600px) {
+              max-width: 200px;
+            }
+            @media(max-width: 1426px) {
+              max-width: 150px;
+            }
+            @media(max-width: 1335px) {
+              max-width: unset;
+            }
           }
 
           .problem-tags {
@@ -585,11 +627,12 @@
             display: flex;
             overflow-x: auto;
             flex-wrap: nowrap;
-            width: calc(100% - 1rem);
+            width: 100%;
           }
         }
 
         .problem-category-box {
+          margin-left: auto;
           width: fit-content;
           background-color: #69669D;
           padding: 6px;
@@ -597,12 +640,24 @@
           justify-content: center;
           align-items: center;
           display: flex;
+          margin-right: 1rem;
+          @media(max-width: 1335px) {
+            margin-left: unset;
+            margin-top: 1rem;
+          }
+          @media (max-width: 425px) {
+            display: none;
+          }
 
           .problem-category {
             font-size: 12px;
-            width: 100%;
+            //width: 100%;
             justify-content: flex-end;
             color: white;
+            max-width: 10rem;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
 
           }
         }
@@ -610,6 +665,14 @@
         i {
           cursor: pointer;
           color: #D1D1D3;
+          @media(max-width: 1335px) {
+            position: absolute;
+            right: 1rem;
+            top: 1rem;
+          }
+          @media (max-width: 425px) {
+            display: none;
+          }
 
           &:hover {
             color: #353269;
@@ -625,6 +688,10 @@
     display: flex;
     flex-direction: column;
     flex-basis: 50%;
+    @media (max-width: 1600px) {
+      flex-basis: 100%;
+    }
+
     //height: 100vh;
     justify-content: space-between;
 
@@ -637,6 +704,10 @@
       padding: 2rem;
       width: calc(100% - 4rem);
       justify-content: space-between;
+      @media (max-width: 620px) {
+        padding: 0.5rem;
+        width: calc(100% - 1rem);
+      }
 
       &-needy-person-box {
         display: flex;
@@ -647,6 +718,9 @@
         h3 {
           font-size: 1rem;
           color: #353269;
+          @media (max-width: 620px) {
+            font-size: 14px;
+          }
         }
 
         .needy-person {
@@ -656,6 +730,9 @@
           p {
             font-size: 12px;
             color: #CECFD0;
+            @media (max-width: 620px) {
+              font-size: 10px;
+            }
 
           }
 
@@ -664,6 +741,9 @@
             font-weight: 600;
             font-size: 14px;
             margin-left: .5rem;
+            @media (max-width: 620px) {
+              font-size: 12px;
+            }
           }
         }
       }
@@ -685,6 +765,9 @@
           transition: .5s all;
           cursor: pointer;
           margin-right: .5rem;
+          @media (max-width: 620px) {
+            padding: 6px;
+          }
 
           &:last-of-type {
             margin-right: 0;
@@ -712,6 +795,10 @@
       height: calc(100% - 2rem);
       padding: 1rem 2rem;
       overflow: auto;
+      @media(max-width: 996px) {
+        padding: 1rem;
+        width: calc(100% - 2rem);
+      }
 
       &::-webkit-scrollbar {
         width: 10px;
@@ -755,11 +842,16 @@
           display: flex;
           width: 50px;
           height: 50px;
-          background-size: contain;
+          background-size: cover;
           background-repeat: no-repeat;
           background-position: center;
           border-radius: 50%;
           margin-right: 2rem;
+          @media(max-width: 1076px) {
+            margin-right: auto;
+            width: 40px;
+            height: 40px;
+          }
         }
 
         .open-help-desk-helper-comments-list-item-comment {
@@ -769,6 +861,10 @@
           display: flex;
           padding: 1rem;
           align-items: center;
+          @media(max-width: 1076px) {
+
+            width: 100%;
+          }
 
           p {
             color: #949390;
@@ -787,6 +883,10 @@
       align-items: flex-end;
       display: flex;
       flex-direction: column;
+      @media (max-width: 620px) {
+        padding: 1rem;
+        width: calc(100% - 2rem);
+      }
 
       textarea {
         resize: none;
